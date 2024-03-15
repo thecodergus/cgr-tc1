@@ -138,7 +138,7 @@ void renderCylinder_convenient(float x1, float y1, float z1, float x2, float y2,
   gluDeleteQuadric(quadric);
 }
 
-void fort(double rang) {
+void castelo(double rang) {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  // Limpa o buffer de cor e profundidade
   glLoadIdentity();                                    // Carrega a matriz identidade
   if (walk) {                                          // Se walk for verdadeiro
@@ -809,8 +809,8 @@ void abrirCastelo() {
   // define a posição da janela na tela
   glutInitWindowPosition(50, 0);
 
-  // cria a janela com o título "fort"
-  glutCreateWindow("fort");
+  // cria a janela com o título "castelo"
+  glutCreateWindow("Castelo");
 
   // define a função de callback para redesenhar a janela
   glutDisplayFunc(displayCastelo);

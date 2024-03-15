@@ -623,11 +623,12 @@ void abrirRobo() {
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
   glutInitWindowSize(5000, 5000);
   glutInitWindowPosition(10, 10);
-  initRobo();
+  glutCreateWindow("Robo");
   glutMouseFunc(mouseRobo);
   glutMotionFunc(motion);
   glutDisplayFunc(displayRobo);
   glutReshapeFunc(reshape);
   glutKeyboardFunc(keyboardRobo);
+  initRobo();
   glutMainLoop();
 }
