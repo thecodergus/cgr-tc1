@@ -6,7 +6,7 @@ int wire = 0, panaroma = 0, open = 0, walk = 0;
 float xpos = 0, ypos = 0, zpos = 0, xrot = 0, yrot = 0, angle = 0.0;
 
 // Função para tratamento das teclas especiais
-static void SpecialKey(int key, int x, int y) {
+void SpecialKey(int key, int x, int y) {
   switch (key) {
     case GLUT_KEY_UP:  // Seta para cima
       rotX -= 0.1;     // Diminui a rotação em X
@@ -670,7 +670,7 @@ void init() {
 /**
  * Função responsável por exibir o objeto na tela.
  */
-void Display() {
+void displayCastelo() {
   // Define as propriedades do material da superfície do objeto
   GLfloat mat_ambient[] = {0.7f, 0.7f, 0.7f, 1.0f};   // cor ambiente
   GLfloat mat_diffuse[] = {0.5f, 0.5f, 0.5f, 1.0f};   // cor difusa
@@ -706,7 +706,7 @@ void Display() {
  * @param x A posição x do cursor na janela.
  * @param y A posição y do cursor na janela.
  */
-void keyboard_castelo(unsigned char key, int x, int y) {
+void keyboardCastelo(unsigned char key, int x, int y) {
   // movimento para cima
   if (key == 'q') {
     xrot += 1;
@@ -752,7 +752,7 @@ void keyboard_castelo(unsigned char key, int x, int y) {
   }
   if (key == 27) exit(0);        // saída do programa (tecla ESC)
   if (key == 'o') open = !open;  // alternar estado de "open"
-  Display();                     // exibe o resultado
+  displayCastelo();              // exibe o resultado
 }
 
 /**
@@ -760,7 +760,7 @@ void keyboard_castelo(unsigned char key, int x, int y) {
  *
  * @param id O identificador do item selecionado.
  */
-void menu(int id) {
+void menuCastelo(int id) {
   // switch para selecionar a opção do menu
   switch (id) {
     case 1:
@@ -813,10 +813,10 @@ void abrirCastelo() {
   glutCreateWindow("fort");
 
   // define a função de callback para redesenhar a janela
-  glutDisplayFunc(Display);
+  glutDisplayFunc(displayCastelo);
 
   // define a função de callback para teclas normais
-  glutKeyboardFunc(keyboard_castelo);
+  glutKeyboardFunc(keyboardCastelo);
 
   // define a função de callback para teclas especiais
   glutSpecialFunc(SpecialKey);
@@ -840,7 +840,7 @@ void abrirCastelo() {
   glEnable(GL_COLOR_MATERIAL);
 
   // cria um menu com as opções definidas na função "menu"
-  glutCreateMenu(menu);
+  glutCreateMenu(menuCastelo);
 
   // adiciona as entradas do menu
   glutAddMenuEntry("Rotacionar", 1);

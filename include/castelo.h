@@ -1,7 +1,11 @@
 #ifndef FD3251F6_FBDE_4449_8537_A27DA2FC24C1
 #define FD3251F6_FBDE_4449_8537_A27DA2FC24C1
 
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
 #include <GL/glut.h>
+#endif
 #include <math.h>
 
 // função de callback para teclas especiais (setas, teclas de função, etc.)
@@ -30,13 +34,13 @@ void inc();
 void init();
 
 // função de callback para redesenhar a janela
-void Display();
+void displayCastelo();
 
 // função de callback para teclas normais
-void keyboard_castelo(unsigned char key, int x, int y);
+void keyboardCastelo(unsigned char key, int x, int y);
 
 // função de callback para o menu
-void menu(int id);
+void menuCastelo(int id);
 
 // função para abrir a janela do castelo e iniciar a aplicação
 void abrirCastelo();
