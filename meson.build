@@ -15,10 +15,25 @@ inc = include_directories('include', '/usr/local/include')
 
 # Importa os arquivos de código fonte
 app_src = files(
- 'src/main.c'
+ 'src/main.c',
+ 'src/boneco.c'
 )
 
+compiler = meson.get_compiler('c')
+
 # Local para importar as dependencias
+openGL_dep = dependency('gl')
+glew_dep = dependency('glew', required: false)
+gluL_dep = dependency('glu')
+glut_dep = dependency('glut', required: false)
+thread_dep = dependency('threads')
+
+
+
+libsPath = '/usr/lib/x86_64-linux-gnu/'
+if not glut_dep.found()
+  glut_dep = compiler.find_library('glut', dirs: libsPath)
+endif
 
 # Aplicação Central
 executable('main',
@@ -27,7 +42,11 @@ executable('main',
    ],
    include_directories : inc,
    dependencies: [
-
+    openGL_dep, 
+    glew_dep,
+    glut_dep, 
+    gluL_dep, 
+    thread_dep,
    ],
    install: true,
    c_args : c_args
