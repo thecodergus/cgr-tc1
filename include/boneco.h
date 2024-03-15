@@ -24,5 +24,6 @@ void displayBoneco(void);
 void idle(void);
 void keyboard(unsigned char key, int x, int y);
 void commandInfo(void);
+void abrirBonecoNeve();
 
 #endif /* B6665F8F_AF03_4FEC_BEF6_16DEDAAE8F4B */
