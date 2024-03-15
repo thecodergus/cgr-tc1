@@ -17,7 +17,8 @@ inc = include_directories('include', '/usr/local/include')
 app_src = files(
  'src/main.c',
  'src/boneco.c',
- 'src/castelo.c'
+ 'src/castelo.c',
+ 'src/robo.c'
 )
 
 compiler = meson.get_compiler('c')
