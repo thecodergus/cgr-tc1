@@ -314,7 +314,7 @@ void idle(void) {
   }
   glutPostRedisplay();
 }
-void keyboard(unsigned char key, int x, int y) {
+void keyboard_boneco(unsigned char key, int x, int y) {
   switch (key) {
     case 'k':
       // rotaciona o boneco de neve grande no sentido anti-horário
@@ -380,7 +380,7 @@ void abrirBonecoNeve() {
   glEnable(GL_COLOR_MATERIAL);                                     // habilita o uso de cores definidas pelo material
   glEnable(GL_NORMALIZE);                                          // habilita o normalize das normais
   commandInfo();                                                   // exibe informações sobre os comandos disponíveis
-  glutKeyboardFunc(keyboard);                                      // define a função de callback para os eventos de teclado
+  glutKeyboardFunc(keyboard_boneco);                               // define a função de callback para os eventos de teclado
   glutDisplayFunc(displayBoneco);                                  // define a função de callback para o redesenho da janela
   glutIdleFunc(idle);                                              // define a função de callback para o processamento em segundo plano
   glutMainLoop();                                                  // inicia o loop principal da aplicação
