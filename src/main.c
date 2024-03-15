@@ -30,7 +30,7 @@ void abrirBonecoNeve() {
   glEnable(GL_NORMALIZE);                                          // habilita o normalize das normais
   commandInfo();                                                   // exibe informações sobre os comandos disponíveis
   glutKeyboardFunc(keyboard);                                      // define a função de callback para os eventos de teclado
-  glutDisplayFunc(display);                                        // define a função de callback para o redesenho da janela
+  glutDisplayFunc(displayBoneco);                                  // define a função de callback para o redesenho da janela
   glutIdleFunc(idle);                                              // define a função de callback para o processamento em segundo plano
   glutMainLoop();                                                  // inicia o loop principal da aplicação
 }
