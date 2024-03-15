@@ -138,7 +138,7 @@ void renderCylinder_convenient(float x1, float y1, float z1, float x2, float y2,
   gluDeleteQuadric(quadric);
 }
 
-void castelo(double rang) {
+void castle(double rang) {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  // Limpa o buffer de cor e profundidade
   glLoadIdentity();                                    // Carrega a matriz identidade
   if (walk) {                                          // Se walk for verdadeiro
@@ -628,11 +628,11 @@ void castelo(double rang) {
 }
 
 /**
- * Função responsável por incrementar o valor de x1 em 0.05 e chamar a função fort(x1).
+ * Função responsável por incrementar o valor de x1 em 0.05 e chamar a função castle(x1).
  */
 void inc() {
   x1 += 0.05;
-  fort(x1);
+  castle(x1);
 }
 
 /**
@@ -696,7 +696,7 @@ void displayCastelo() {
   glutSwapBuffers();
 
   // Chama a função que desenha a fortaleza com a posição x1
-  fort(x1);
+  castle(x1);
 }
 
 /**
