@@ -231,7 +231,7 @@ void fort(double rang) {
 
   glColor3f(210 / 255.0, 180 / 255.0, 140 / 255.0);  // define a cor das paredes como marrom claro
 
-  // Gate wall 1
+  // Desenha a parede da esquerda do portão
   glPushMatrix();                // salva a matriz atual na pilha
   glScaled(9, 1.5, 0.5);         // escala a parede da esquerda do portão
   glTranslatef(-1.5, -1, 47.0);  // move a parede da esquerda do portão para a posição desejada
@@ -241,7 +241,7 @@ void fort(double rang) {
     glutSolidCube(2);            // desenha a parede da esquerda do portão sólida
   glPopMatrix();                 // restaura a matriz anterior da pilha
 
-  // Gate wall 2
+  // Desenha a parede da direita do portão
   glPushMatrix();               // salva a matriz atual na pilha
   glScaled(9, 1.5, 0.5);        // escala a parede da direita do portão
   glTranslatef(1.5, -1, 47.0);  // move a parede da direita do portão para a posição desejada
@@ -251,7 +251,7 @@ void fort(double rang) {
     glutSolidCube(2);           // desenha a parede da direita do portão sólida
   glPopMatrix();                // restaura a matriz anterior da pilha
 
-  // Entrance l
+  // Desenha a parte esquerda do portão
   glPushMatrix();                // salva a matriz atual na pilha
   glScaled(1.2, 2.6, 0.9);       // escala a entrada da esquerda
   glTranslatef(-4.6, -0.2, 26);  // move a entrada da esquerda para a posição desejada
@@ -261,7 +261,7 @@ void fort(double rang) {
     glutSolidCube(2);            // desenha a entrada da esquerda sólida
   glPopMatrix();                 // restaura a matriz anterior da pilha
 
-  // Entrance r
+  // Desenha a parte direita do portão
   glPushMatrix();               // salva a matriz atual na pilha
   glScaled(1.2, 2.6, 0.9);      // escala a entrada da direita
   glTranslatef(4.6, -0.2, 26);  // move a entrada da direita para a posição desejada
@@ -271,7 +271,7 @@ void fort(double rang) {
     glutSolidCube(2);           // desenha a entrada da direita sólida
   glPopMatrix();                // restaura a matriz anterior da pilha
 
-  // Entrada t
+  // Desenha a entrada t1
   glPushMatrix();
   // Aplica uma escala de 4.4 na direção x, 1 na direção y e 0.9 na direção z
   glScaled(4.4, 1, 0.9);
@@ -285,7 +285,7 @@ void fort(double rang) {
   // Restaura a matriz de modelagem para o estado anterior
   glPopMatrix();
 
-  // Entrada t1
+  // Entrada t2
   glPushMatrix();
   // Aplica uma escala de 4.4 na direção x, 1 na direção y e 0.9 na direção z
   glScaled(4.4, 1, 0.9);
@@ -355,7 +355,7 @@ void fort(double rang) {
   // Define a cor do objeto como (139/255, 69/255, 19/255)
   glColor3f(139 / 255.0, 69 / 255.0, 19 / 255.0);
 
-  // Gate1
+  // Desenha o portão
   glPushMatrix();
   // Se open for verdadeiro, rotaciona o objeto -10 graus em torno do eixo y
   if (open) glRotatef(-10, 0, 1, 0);
@@ -371,7 +371,7 @@ void fort(double rang) {
   // Restaura a matriz de modelagem para o estado anterior
   glPopMatrix();
 
-  // Gate2
+  // Desenha o portão
   glPushMatrix();
   // Se open for verdadeiro, rotaciona o objeto 10 graus em torno do eixo y
   if (open) glRotatef(10, 0, 1, 0);
@@ -667,6 +667,9 @@ void init() {
   glDepthFunc(GL_LEQUAL);
 }
 
+/**
+ * Função responsável por exibir o objeto na tela.
+ */
 void Display() {
   // Define as propriedades do material da superfície do objeto
   GLfloat mat_ambient[] = {0.7f, 0.7f, 0.7f, 1.0f};   // cor ambiente
@@ -696,6 +699,13 @@ void Display() {
   fort(x1);
 }
 
+/**
+ * Função responsável por lidar com eventos de teclado relacionados ao castelo.
+ *
+ * @param key A tecla pressionada.
+ * @param x A posição x do cursor na janela.
+ * @param y A posição y do cursor na janela.
+ */
 void keyboard_castelo(unsigned char key, int x, int y) {
   // movimento para cima
   if (key == 'q') {
@@ -745,6 +755,11 @@ void keyboard_castelo(unsigned char key, int x, int y) {
   Display();                     // exibe o resultado
 }
 
+/**
+ * Função responsável por executar a ação correspondente ao item selecionado no menu.
+ *
+ * @param id O identificador do item selecionado.
+ */
 void menu(int id) {
   // switch para selecionar a opção do menu
   switch (id) {
@@ -775,6 +790,15 @@ void menu(int id) {
   glutPostRedisplay();  // solicita a reexibição da janela
 }
 
+/**
+ * Função responsável por abrir a janela do castelo.
+ * Inicializa o modo de exibição da janela, define o tamanho e a posição da janela,
+ * cria a janela com o título "fort", define as funções de callback para redesenhar a janela,
+ * capturar teclas normais e teclas especiais, habilita a iluminação, define o modelo de sombreamento,
+ * habilita o teste de profundidade, habilita a normalização dos vetores normais,
+ * habilita o uso da cor do material, cria um menu com opções e atribui o menu ao botão direito do mouse.
+ * Por fim, inicializa parâmetros e variáveis e inicia o loop principal da aplicação.
+ */
 void abrirCastelo() {
   // inicializa o modo de exibição da janela
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
