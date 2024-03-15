@@ -2,11 +2,7 @@
 #define B6665F8F_AF03_4FEC_BEF6_16DEDAAE8F4B
 
 // Inclusão de bibliotecas dependendo do sistema operacional
-#ifdef __APPLE__
-#include <GLUT/glut.h>
-#else
 #include <GL/glut.h>
-#endif
 
 // Inclusão de bibliotecas padrão
 #include <math.h>
