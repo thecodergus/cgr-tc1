@@ -20,7 +20,7 @@ void house(void);
 void tree(void);
 void moonOrSun(void);
 void snowman(void);
-void display(void);
+void displayBoneco(void);
 void idle(void);
 void keyboard(unsigned char key, int x, int y);
 void commandInfo(void);

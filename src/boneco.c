@@ -189,7 +189,7 @@ void snowman(void) {
   glPopMatrix();
 }
 
-void display(void) {
+void displayBoneco(void) {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
   // Neve no chão
