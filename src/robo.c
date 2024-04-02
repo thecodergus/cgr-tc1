@@ -90,6 +90,7 @@ void normalize(double a[]) {
 void initRobo(void) {
   glClearColor(0.0, 0.0, 0.0, 0.0);  // Define a cor de fundo como preta
   glShadeModel(GL_FLAT);             // Define o modelo de sombreamento como plano
+
 }
 
 // Função para exibir os dedos do robô
@@ -348,408 +349,409 @@ void keyboardRobo(unsigned char key, int x, int y) {
       rotatePoint(up, 0.05, center);  // Rotaciona o vetor "up" em torno do eixo "center" no sentido horário
       glutPostRedisplay();            // Solicita que a tela seja redesenhada
       break;
-    case 'q':
-      // Diminui a distância focal da câmera (zoom in)
-      if (Znear > 120) {
-        Znear = 120;  // Limita o valor máximo de Znear
-      } else if (Znear <= 60) {
-        Znear = 60;  // Limita o valor mínimo de Znear
-      } else {
-        Znear -= 1.0;  // Diminui o valor de Znear
-      }
-      reshape(windowWidth, windowHeight);  // Atualiza a janela com a nova distância focal
-      glutPostRedisplay();                 // Solicita que a tela seja redesenhada
-      break;
+      /*
+      case 'q':
+        // Diminui a distância focal da câmera (zoom in)
+        if (Znear > 120) {
+          Znear = 120;  // Limita o valor máximo de Znear
+        } else if (Znear <= 60) {
+          Znear = 60;  // Limita o valor mínimo de Znear
+        } else {
+          Znear -= 1.0;  // Diminui o valor de Znear
+        }
+        reshape(windowWidth, windowHeight);  // Atualiza a janela com a nova distância focal
+        glutPostRedisplay();                 // Solicita que a tela seja redesenhada
+        break;
 
-    case 'Q':
-      // Aumenta a distância focal da câmera (zoom out)
-      if (Znear >= 120) {
-        Znear = 120;  // Limita o valor máximo de Znear
-      } else if (Znear < 60) {
-        Znear = 60;  // Limita o valor mínimo de Znear
-      } else {
-        Znear += 1.0;  // Aumenta o valor de Znear
-      }
-      reshape(windowWidth, windowHeight);  // Atualiza a janela com a nova distância focal
-      glutPostRedisplay();                 // Solicita que a tela seja redesenhada
-      break;
+      case 'Q':
+        // Aumenta a distância focal da câmera (zoom out)
+        if (Znear >= 120) {
+          Znear = 120;  // Limita o valor máximo de Znear
+        } else if (Znear < 60) {
+          Znear = 60;  // Limita o valor mínimo de Znear
+        } else {
+          Znear += 1.0;  // Aumenta o valor de Znear
+        }
+        reshape(windowWidth, windowHeight);  // Atualiza a janela com a nova distância focal
+        glutPostRedisplay();                 // Solicita que a tela seja redesenhada
+        break;
 
-    case '7':
-      // Aumenta a rotação do ombro esquerdo do robot
-      if (shoulder10 > 150) {
-        shoulder10 = 150;  // Limita o valor máximo de rotação
-      } else {
-        shoulder10 = (shoulder10 + 5);  // Aumenta a rotação em 5 graus
-        glutPostRedisplay();            // Solicita que a tela seja redesenhada
-      }
-      break;
+      case '7':
+        // Aumenta a rotação do ombro esquerdo do robot
+        if (shoulder10 > 150) {
+          shoulder10 = 150;  // Limita o valor máximo de rotação
+        } else {
+          shoulder10 = (shoulder10 + 5);  // Aumenta a rotação em 5 graus
+          glutPostRedisplay();            // Solicita que a tela seja redesenhada
+        }
+        break;
 
-    case '8':
-      // Diminui a rotação do ombro esquerdo do robot
-      if (shoulder10 <= -90) {
-        shoulder10 = -90;  // Limita o valor mínimo de rotação
-      } else {
-        shoulder10 = (shoulder10 - 5);  // Diminui a rotação em 5 graus
-        glutPostRedisplay();            // Solicita que a tela seja redesenhada
-      }
-      break;
+      case '8':
+        // Diminui a rotação do ombro esquerdo do robot
+        if (shoulder10 <= -90) {
+          shoulder10 = -90;  // Limita o valor mínimo de rotação
+        } else {
+          shoulder10 = (shoulder10 - 5);  // Diminui a rotação em 5 graus
+          glutPostRedisplay();            // Solicita que a tela seja redesenhada
+        }
+        break;
 
-        case 'p':
-          // Aumenta a rotação do ombro direito do robot
-          if (shoulder1 > 45) {
-            shoulder1 = 45;  // Limita o valor máximo de rotação
-          } else {
-            shoulder1 = (shoulder1 + 5);  // Aumenta a rotação em 5 graus
-            glutPostRedisplay();          // Solicita que a tela seja redesenhada
-          }
-          break;
+          case 'p':
+            // Aumenta a rotação do ombro direito do robot
+            if (shoulder1 > 45) {
+              shoulder1 = 45;  // Limita o valor máximo de rotação
+            } else {
+              shoulder1 = (shoulder1 + 5);  // Aumenta a rotação em 5 graus
+              glutPostRedisplay();          // Solicita que a tela seja redesenhada
+            }
+            break;
 
-        case 'P':
-          // Diminui a rotação do ombro direito do robot
-          if (shoulder1 <= -90) {
-            shoulder1 = -90;  // Limita o valor mínimo de rotação
-          } else {
-            shoulder1 = (shoulder1 - 5);  // Diminui a rotação em 5 graus
-            glutPostRedisplay();          // Solicita que a tela seja redesenhada
-          }
-          break;
+          case 'P':
+            // Diminui a rotação do ombro direito do robot
+            if (shoulder1 <= -90) {
+              shoulder1 = -90;  // Limita o valor mínimo de rotação
+            } else {
+              shoulder1 = (shoulder1 - 5);  // Diminui a rotação em 5 graus
+              glutPostRedisplay();          // Solicita que a tela seja redesenhada
+            }
+            break;
 
-        case 'o':
-          // Aumenta a rotação do cotovelo esquerdo do robot
-          if (shoulder2 <= -45) {
-            shoulder2 = -45;  // Limita o valor máximo de rotação
-          } else {
-            shoulder2 = (shoulder2 - 5);  // Diminui a rotação em 5 graus (note que o sentido é invertido em relação ao ombro)
-            glutPostRedisplay();          // Solicita que a tela seja redesenhada
-          }
-          break;
+          case 'o':
+            // Aumenta a rotação do cotovelo esquerdo do robot
+            if (shoulder2 <= -45) {
+              shoulder2 = -45;  // Limita o valor máximo de rotação
+            } else {
+              shoulder2 = (shoulder2 - 5);  // Diminui a rotação em 5 graus (note que o sentido é invertido em relação ao ombro)
+              glutPostRedisplay();          // Solicita que a tela seja redesenhada
+            }
+            break;
 
-        case 'O':
-          // Diminui a rotação do cotovelo esquerdo do robot
-          if (shoulder2 > 90) {
-            shoulder2 = 90;  // Limita o valor mínimo de rotação
-          } else {
-            shoulder2 = (shoulder2 + 5);  // Aumenta a rotação em 5 graus
-            glutPostRedisplay();          // Solicita que a tela seja redesenhada
-          }
-          break;
+          case 'O':
+            // Diminui a rotação do cotovelo esquerdo do robot
+            if (shoulder2 > 90) {
+              shoulder2 = 90;  // Limita o valor mínimo de rotação
+            } else {
+              shoulder2 = (shoulder2 + 5);  // Aumenta a rotação em 5 graus
+              glutPostRedisplay();          // Solicita que a tela seja redesenhada
+            }
+            break;
 
-        case '9':
-          // Aumenta a rotação do cotovelo direito do robot
-          if (shoulder20 <= -150) {
-            shoulder20 = -150;  // Limita o valor máximo de rotação
-          } else {
-            shoulder20 = (shoulder20 - 5);  // Diminui a rotação em 5 graus (note que o sentido é invertido em relação ao ombro)
-            glutPostRedisplay();            // Solicita que a tela seja redesenhada
-          }
-          break;
+          case '9':
+            // Aumenta a rotação do cotovelo direito do robot
+            if (shoulder20 <= -150) {
+              shoulder20 = -150;  // Limita o valor máximo de rotação
+            } else {
+              shoulder20 = (shoulder20 - 5);  // Diminui a rotação em 5 graus (note que o sentido é invertido em relação ao ombro)
+              glutPostRedisplay();            // Solicita que a tela seja redesenhada
+            }
+            break;
 
-        case '6':
-          // Diminui a rotação do cotovelo direito do robot
-          if (shoulder20 > 90) {
-            shoulder20 = 90;  // Limita o valor mínimo de rotação
-          } else {
-            shoulder20 = (shoulder20 + 5);  // Aumenta a rotação em 5 graus
-            glutPostRedisplay();            // Solicita que a tela seja redesenhada
-          }
-          break;
-          ////
+          case '6':
+            // Diminui a rotação do cotovelo direito do robot
+            if (shoulder20 > 90) {
+              shoulder20 = 90;  // Limita o valor mínimo de rotação
+            } else {
+              shoulder20 = (shoulder20 + 5);  // Aumenta a rotação em 5 graus
+              glutPostRedisplay();            // Solicita que a tela seja redesenhada
+            }
+            break;
+            ////
 
-        case 'i':
-          // Aumenta a rotação do antebraço esquerdo do robot (elbow1)
-          if (elbow1 >= 150) {
-            elbow1 = 150;  // Limita o valor máximo de rotação
-          } else {
-            elbow1 = (elbow1 + 5);  // Aumenta a rotação em 5 graus
-            glutPostRedisplay();    // Solicita que a tela seja redesenhada
-          }
-          break;
+          case 'i':
+            // Aumenta a rotação do antebraço esquerdo do robot (elbow1)
+            if (elbow1 >= 150) {
+              elbow1 = 150;  // Limita o valor máximo de rotação
+            } else {
+              elbow1 = (elbow1 + 5);  // Aumenta a rotação em 5 graus
+              glutPostRedisplay();    // Solicita que a tela seja redesenhada
+            }
+            break;
 
-        case 'I':
-          // Diminui a rotação do antebraço esquerdo do robot (elbow1)
-          if (elbow1 <= 0) {
-            elbow1 = 0;  // Limita o valor mínimo de rotação
-          } else {
-            elbow1 = (elbow1 - 5);  // Diminui a rotação em 5 graus
-            glutPostRedisplay();    // Solicita que a tela seja redesenhada
-          }
-          break;
+          case 'I':
+            // Diminui a rotação do antebraço esquerdo do robot (elbow1)
+            if (elbow1 <= 0) {
+              elbow1 = 0;  // Limita o valor mínimo de rotação
+            } else {
+              elbow1 = (elbow1 - 5);  // Diminui a rotação em 5 graus
+              glutPostRedisplay();    // Solicita que a tela seja redesenhada
+            }
+            break;
 
-        case 'u':
-          // Aumenta a rotação do antebraço direito do robot (elbow2)
-          if (elbow2 >= 150) {
-            elbow2 = 150;  // Limita o valor máximo de rotação
-          } else {
-            elbow2 = (elbow2 + 5);  // Aumenta a rotação em 5 graus
-            glutPostRedisplay();    // Solicita que a tela seja redesenhada
-          }
-          break;
+          case 'u':
+            // Aumenta a rotação do antebraço direito do robot (elbow2)
+            if (elbow2 >= 150) {
+              elbow2 = 150;  // Limita o valor máximo de rotação
+            } else {
+              elbow2 = (elbow2 + 5);  // Aumenta a rotação em 5 graus
+              glutPostRedisplay();    // Solicita que a tela seja redesenhada
+            }
+            break;
 
-        case 'U':
-          // Diminui a rotação do antebraço direito do robot (elbow2)
-          if (elbow2 <= 0) {
-            elbow2 = 0;  // Limita o valor mínimo de rotação
-          } else {
-            elbow2 = (elbow2 - 5);  // Diminui a rotação em 5 graus
-            glutPostRedisplay();    // Solicita que a tela seja redesenhada
-          }
-          break;
+          case 'U':
+            // Diminui a rotação do antebraço direito do robot (elbow2)
+            if (elbow2 <= 0) {
+              elbow2 = 0;  // Limita o valor mínimo de rotação
+            } else {
+              elbow2 = (elbow2 - 5);  // Diminui a rotação em 5 graus
+              glutPostRedisplay();    // Solicita que a tela seja redesenhada
+            }
+            break;
 
-        case 'y':
-          // Aumenta a rotação da coxa esquerda do robot (leg1)
-          if (leg1 >= 90) {
-            leg1 = 90;  // Limita o valor máximo de rotação
-          } else {
-            leg1 = (leg1 + 5);    // Aumenta a rotação em 5 graus
+          case 'y':
+            // Aumenta a rotação da coxa esquerda do robot (leg1)
+            if (leg1 >= 90) {
+              leg1 = 90;  // Limita o valor máximo de rotação
+            } else {
+              leg1 = (leg1 + 5);    // Aumenta a rotação em 5 graus
+              glutPostRedisplay();  // Solicita que a tela seja redesenhada
+            }
+            break;
+
+          case 'Y':
+            // Diminui a rotação da coxa esquerda do robot (leg1)
+            if (leg1 <= -90) {
+              leg1 = -90;  // Limita o valor mínimo de rotação
+            } else {
+              leg1 = (leg1 - 5);    // Diminui a rotação em 5 graus
+              glutPostRedisplay();  // Solicita que a tela seja redesenhada
+            }
+            break;
+
+          case 'z':
+            // Aumenta a rotação da perna esquerda do robot em torno do eixo Z (leg1z)
+            if (leg1z >= 90) {
+              leg1z = 90;  // Limita o valor máximo de rotação
+            } else {
+              leg1z = (leg1z + 5);  // Aumenta a rotação em 5 graus
+              glutPostRedisplay();  // Solicita que a tela seja redesenhada
+            }
+            break;
+
+          case 'Z':
+            // Diminui a rotação da perna esquerda do robot em torno do eixo Z (leg1z)
+            if (leg1z <= -90) {
+              leg1z = -90;  // Limita o valor mínimo de rotação
+            } else {
+              leg1z = (leg1z - 5);  // Diminui a rotação em 5 graus
+              glutPostRedisplay();  // Solicita que a tela seja redesenhada
+            }
+            break;
+            //
+          case 't':
+            // Aumenta a rotação da canela esquerda do robot (knee1)
+            if (knee1 <= -90) {
+              knee1 = -90;  // Limita o valor máximo de rotação
+            } else {
+              knee1 = (knee1 - 5);  // Diminui a rotação em 5 graus (note que o sentido é invertido em relação ao antebraço)
+              glutPostRedisplay();  // Solicita que a tela seja redesenhada
+            }
+            break;
+
+          case 'T':
+            // Diminui a rotação da canela esquerda do robot (knee1)
+            if (knee1 >= 0) {
+              knee1 = 0;  // Limita o valor mínimo de rotação
+            } else {
+              knee1 = (knee1 + 5);  // Aumenta a rotação em 5 graus
+              glutPostRedisplay();  // Solicita que a tela seja redesenhada
+            }
+            break;
+
+          case 'r':
+            // Aumenta a rotação da coxa direita do robot (leg2)
+            if (leg2 >= 90) {
+              leg2 = 90;  // Limita o valor máximo de rotação
+            } else {
+              leg2 = (leg2 + 5);    // Aumenta a rotação em 5 graus
+              glutPostRedisplay();  // Solicita que a tela seja redesenhada
+            }
+            break;
+
+          case 'R':
+            // Diminui a rotação da coxa direita do robot (leg2)
+            if (leg2 <= -90) {
+              leg2 = -90;  // Limita o valor mínimo de rotação
+            } else {
+              leg2 = (leg2 - 5);    // Diminui a rotação em 5 graus
+              glutPostRedisplay();  // Solicita que a tela seja redesenhada
+            }
+            break;
+
+          case '2':
+            // Aumenta a rotação da perna direita do robot em torno do eixo Z (leg2z)
+            if (leg2z >= 90) {
+              leg2z = 90;  // Limita o valor máximo de rotação
+            } else {
+              leg2z = (leg2z + 5);  // Aumenta a rotação em 5 graus
+              glutPostRedisplay();  // Solicita que a tela seja redesenhada
+            }
+            break;
+
+          case '3':
+            // Diminui a rotação da perna direita do robot em torno do eixo Z (leg2z)
+            if (leg2z <= -90) {
+              leg2z = -90;  // Limita o valor mínimo de rotação
+            } else {
+              leg2z = (leg2z - 5);  // Diminui a rotação em 5 graus
+              glutPostRedisplay();  // Solicita que a tela seja redesenhada
+            }
+            break;
+            //
+          case 'e':
+            // Aumenta a rotação da canela direita do robot (knee2)
+            if (knee2 <= -90) {
+              knee2 = -90;  // Limita o valor máximo de rotação
+            } else {
+              knee2 = (knee2 - 5);  // Diminui a rotação em 5 graus (note que o sentido é invertido em relação ao antebraço)
+              glutPostRedisplay();  // Solicita que a tela seja redesenhada
+            }
+            break;
+
+          case 'E':
+            // Diminui a rotação da canela direita do robot (knee2)
+            if (knee2 >= 0) {
+              knee2 = 0;  // Limita o valor mínimo de rotação
+            } else {
+              knee2 = (knee2 + 5);  // Aumenta a rotação em 5 graus
+              glutPostRedisplay();  // Solicita que a tela seja redesenhada
+            }
+            break;
+
+          case 'l':
+            // Aumenta a rotação da base do dedo 1 (fingerBase1[0])
+            if (fingerBase1[0] < 90) {
+              fingerBase1[0] = (fingerBase1[0] + 5) % 360;  // Aumenta a rotação em 5 graus e mantém o valor entre 0 e 360
+            }
             glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          }
-          break;
+            break;
 
-        case 'Y':
-          // Diminui a rotação da coxa esquerda do robot (leg1)
-          if (leg1 <= -90) {
-            leg1 = -90;  // Limita o valor mínimo de rotação
-          } else {
-            leg1 = (leg1 - 5);    // Diminui a rotação em 5 graus
+          case 'L':
+            // Diminui a rotação da base do dedo 1 (fingerBase1[0])
+            if (fingerBase1[0] > 0) {
+              fingerBase1[0] = (fingerBase1[0] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
+            }
             glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          }
-          break;
+            break;
 
-        case 'z':
-          // Aumenta a rotação da perna esquerda do robot em torno do eixo Z (leg1z)
-          if (leg1z >= 90) {
-            leg1z = 90;  // Limita o valor máximo de rotação
-          } else {
-            leg1z = (leg1z + 5);  // Aumenta a rotação em 5 graus
+          case 'k':
+            // Aumenta a rotação do segmento superior do dedo 1 (fingerUp1[0])
+            if (fingerUp1[0] < 90) {
+              fingerUp1[0] = (fingerUp1[0] + 5) % 360;  // Aumenta a rotação em 5 graus e mantém o valor entre 0 e 360
+            }
             glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          }
-          break;
+            break;
 
-        case 'Z':
-          // Diminui a rotação da perna esquerda do robot em torno do eixo Z (leg1z)
-          if (leg1z <= -90) {
-            leg1z = -90;  // Limita o valor mínimo de rotação
-          } else {
-            leg1z = (leg1z - 5);  // Diminui a rotação em 5 graus
+          case 'K':
+            // Diminui a rotação do segmento superior do dedo 1 (fingerUp1[0])
+            if (fingerUp1[0] > 0) {
+              fingerUp1[0] = (fingerUp1[0] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
+            }
             glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          }
-          break;
-          //
-        case 't':
-          // Aumenta a rotação da canela esquerda do robot (knee1)
-          if (knee1 <= -90) {
-            knee1 = -90;  // Limita o valor máximo de rotação
-          } else {
-            knee1 = (knee1 - 5);  // Diminui a rotação em 5 graus (note que o sentido é invertido em relação ao antebraço)
+            break;
+
+          case 'j':
+            // Aumenta a rotação da base do dedo 2 (fingerBase1[1])
+            if (fingerBase1[1] < 90) {
+              fingerBase1[1] = (fingerBase1[1] + 5) % 360;  // Aumenta a rotação em 5 graus e mantém o valor entre 0 e 360
+            }
             glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          }
-          break;
+            break;
 
-        case 'T':
-          // Diminui a rotação da canela esquerda do robot (knee1)
-          if (knee1 >= 0) {
-            knee1 = 0;  // Limita o valor mínimo de rotação
-          } else {
-            knee1 = (knee1 + 5);  // Aumenta a rotação em 5 graus
+          case 'J':
+            // Diminui a rotação da base do dedo 2 (fingerBase1[1])
+            if (fingerBase1[1] > 0) {
+              fingerBase1[1] = (fingerBase1[1] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
+            }
             glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          }
-          break;
+            break;
 
-        case 'r':
-          // Aumenta a rotação da coxa direita do robot (leg2)
-          if (leg2 >= 90) {
-            leg2 = 90;  // Limita o valor máximo de rotação
-          } else {
-            leg2 = (leg2 + 5);    // Aumenta a rotação em 5 graus
+          case 'h':
+            // Aumenta a rotação do segmento superior do dedo 2 (fingerUp1[1])
+            if (fingerUp1[1] < 90) {
+              fingerUp1[1] = (fingerUp1[1] + 5) % 360;  // Aumenta a rotação em 5 graus e mantém o valor entre 0 e 360
+            }
             glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          }
-          break;
-
-        case 'R':
-          // Diminui a rotação da coxa direita do robot (leg2)
-          if (leg2 <= -90) {
-            leg2 = -90;  // Limita o valor mínimo de rotação
-          } else {
-            leg2 = (leg2 - 5);    // Diminui a rotação em 5 graus
+            break;
+          case 'H':
+            // Diminui a rotação do segmento superior do dedo 3 (fingerUp1[1])
+            if (fingerUp1[1] > 0) {
+              fingerUp1[1] = (fingerUp1[1] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
+            }
             glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          }
-          break;
+            break;
 
-        case '2':
-          // Aumenta a rotação da perna direita do robot em torno do eixo Z (leg2z)
-          if (leg2z >= 90) {
-            leg2z = 90;  // Limita o valor máximo de rotação
-          } else {
-            leg2z = (leg2z + 5);  // Aumenta a rotação em 5 graus
+          case 'g':
+            // Aumenta a rotação da base do dedo 4 (fingerBase1[2])
+            if (fingerBase1[2] < 90) {
+              fingerBase1[2] = (fingerBase1[2] + 5) % 360;  // Aumenta a rotação em 5 graus e mantém o valor entre 0 e 360
+            }
             glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          }
-          break;
+            break;
 
-        case '3':
-          // Diminui a rotação da perna direita do robot em torno do eixo Z (leg2z)
-          if (leg2z <= -90) {
-            leg2z = -90;  // Limita o valor mínimo de rotação
-          } else {
-            leg2z = (leg2z - 5);  // Diminui a rotação em 5 graus
+          case 'G':
+            // Diminui a rotação da base do dedo 4 (fingerBase1[2])
+            if (fingerBase1[2] > 0) {
+              fingerBase1[2] = (fingerBase1[2] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
+            }
             glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          }
-          break;
-          //
-        case 'e':
-          // Aumenta a rotação da canela direita do robot (knee2)
-          if (knee2 <= -90) {
-            knee2 = -90;  // Limita o valor máximo de rotação
-          } else {
-            knee2 = (knee2 - 5);  // Diminui a rotação em 5 graus (note que o sentido é invertido em relação ao antebraço)
+            break;
+
+          case 'f':
+            // Aumenta a rotação do segmento superior do dedo 4 (fingerUp1[2])
+            if (fingerUp1[2] < 90) {
+              fingerUp1[2] = (fingerUp1[2] + 5) % 360;  // Aumenta a rotação em 5 graus e mantém o valor entre 0 e 360
+            }
             glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          }
-          break;
+            break;
 
-        case 'E':
-          // Diminui a rotação da canela direita do robot (knee2)
-          if (knee2 >= 0) {
-            knee2 = 0;  // Limita o valor mínimo de rotação
-          } else {
-            knee2 = (knee2 + 5);  // Aumenta a rotação em 5 graus
+          case 'F':
+            // Diminui a rotação do segmento superior do dedo 4 (fingerUp1[2])
+            if (fingerUp1[2] > 0) {
+              fingerUp1[2] = (fingerUp1[2] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
+            }
             glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          }
-          break;
-
-        case 'l':
-          // Aumenta a rotação da base do dedo 1 (fingerBase1[0])
-          if (fingerBase1[0] < 90) {
-            fingerBase1[0] = (fingerBase1[0] + 5) % 360;  // Aumenta a rotação em 5 graus e mantém o valor entre 0 e 360
-          }
-          glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          break;
-
-        case 'L':
-          // Diminui a rotação da base do dedo 1 (fingerBase1[0])
-          if (fingerBase1[0] > 0) {
-            fingerBase1[0] = (fingerBase1[0] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
-          }
-          glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          break;
-
-        case 'k':
-          // Aumenta a rotação do segmento superior do dedo 1 (fingerUp1[0])
-          if (fingerUp1[0] < 90) {
-            fingerUp1[0] = (fingerUp1[0] + 5) % 360;  // Aumenta a rotação em 5 graus e mantém o valor entre 0 e 360
-          }
-          glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          break;
-
-        case 'K':
-          // Diminui a rotação do segmento superior do dedo 1 (fingerUp1[0])
-          if (fingerUp1[0] > 0) {
-            fingerUp1[0] = (fingerUp1[0] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
-          }
-          glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          break;
-
-        case 'j':
-          // Aumenta a rotação da base do dedo 2 (fingerBase1[1])
-          if (fingerBase1[1] < 90) {
-            fingerBase1[1] = (fingerBase1[1] + 5) % 360;  // Aumenta a rotação em 5 graus e mantém o valor entre 0 e 360
-          }
-          glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          break;
-
-        case 'J':
-          // Diminui a rotação da base do dedo 2 (fingerBase1[1])
-          if (fingerBase1[1] > 0) {
-            fingerBase1[1] = (fingerBase1[1] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
-          }
-          glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          break;
-
-        case 'h':
-          // Aumenta a rotação do segmento superior do dedo 2 (fingerUp1[1])
-          if (fingerUp1[1] < 90) {
-            fingerUp1[1] = (fingerUp1[1] + 5) % 360;  // Aumenta a rotação em 5 graus e mantém o valor entre 0 e 360
-          }
-          glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          break;
-        case 'H':
-          // Diminui a rotação do segmento superior do dedo 3 (fingerUp1[1])
-          if (fingerUp1[1] > 0) {
-            fingerUp1[1] = (fingerUp1[1] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
-          }
-          glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          break;
-
-        case 'g':
-          // Aumenta a rotação da base do dedo 4 (fingerBase1[2])
-          if (fingerBase1[2] < 90) {
-            fingerBase1[2] = (fingerBase1[2] + 5) % 360;  // Aumenta a rotação em 5 graus e mantém o valor entre 0 e 360
-          }
-          glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          break;
-
-        case 'G':
-          // Diminui a rotação da base do dedo 4 (fingerBase1[2])
-          if (fingerBase1[2] > 0) {
-            fingerBase1[2] = (fingerBase1[2] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
-          }
-          glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          break;
-
-        case 'f':
-          // Aumenta a rotação do segmento superior do dedo 4 (fingerUp1[2])
-          if (fingerUp1[2] < 90) {
-            fingerUp1[2] = (fingerUp1[2] + 5) % 360;  // Aumenta a rotação em 5 graus e mantém o valor entre 0 e 360
-          }
-          glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          break;
-
-        case 'F':
-          // Diminui a rotação do segmento superior do dedo 4 (fingerUp1[2])
-          if (fingerUp1[2] > 0) {
-            fingerUp1[2] = (fingerUp1[2] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
-          }
-          glutPostRedisplay();  // Solicita que a tela seja redesenhada
-          break;
-        case 'm':
-          if (fingerBase1[3] < 90) fingerBase1[3] = (fingerBase1[3] + 5) % 360;
-          glutPostRedisplay();
-          break;
-        case 'M':
-          if (fingerBase1[3] > 0)
-            fingerBase1[3] = (fingerBase1[3] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
-          glutPostRedisplay();                            // Solicita que a tela seja redesenhada
-          break;
-        case 'n':
-          if (fingerUp1[3] < 90) fingerUp1[3] = (fingerUp1[3] + 5) % 360;  // Aumenta a rotação em 5 graus e mantém o valor entre 0 e 360
-          glutPostRedisplay();                                             // Solicita que a tela seja redesenhada
-          break;
-        case 'N':
-          if (fingerUp1[3] > 0) fingerUp1[3] = (fingerUp1[3] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
-          glutPostRedisplay();                                            // Solicita que a tela seja redesenhada
-          break;
-        case 'b':
-          if (fingerBase1[4] < 90)
-            fingerBase1[4] = (fingerBase1[4] + 5) % 360;  // Aumenta a rotação em 5 graus e mantém o valor entre 0 e 360
-          glutPostRedisplay();                            // Solicita que a tela seja redesenhada
-          break;
-        case 'B':
-          if (fingerBase1[4] > 0)
-            fingerBase1[4] = (fingerBase1[4] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
-          glutPostRedisplay();                            // Solicita que a tela seja redesenhada
-          break;
-        case 'v':
-          if (fingerUp1[4] < 90) fingerUp1[4] = (fingerUp1[4] + 5) % 360;  // Aumenta a rotação em 5 graus e mantém o valor entre 0 e 360
-          glutPostRedisplay();                                             // Solicita que a tela seja redesenhada
-          break;
-        case 'V':
-          if (fingerUp1[4] > 0) fingerUp1[4] = (fingerUp1[4] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
-          glutPostRedisplay();                                            // Solicita que a tela seja redesenhada
-          break;
-        case 27:
-          exit(0);
-          break;
-        default:
-          break;
-      }
+            break;
+          case 'm':
+            if (fingerBase1[3] < 90) fingerBase1[3] = (fingerBase1[3] + 5) % 360;
+            glutPostRedisplay();
+            break;
+          case 'M':
+            if (fingerBase1[3] > 0)
+              fingerBase1[3] = (fingerBase1[3] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
+            glutPostRedisplay();                            // Solicita que a tela seja redesenhada
+            break;
+          case 'n':
+            if (fingerUp1[3] < 90) fingerUp1[3] = (fingerUp1[3] + 5) % 360;  // Aumenta a rotação em 5 graus e mantém o valor entre 0 e 360
+            glutPostRedisplay();                                             // Solicita que a tela seja redesenhada
+            break;
+          case 'N':
+            if (fingerUp1[3] > 0) fingerUp1[3] = (fingerUp1[3] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
+            glutPostRedisplay();                                            // Solicita que a tela seja redesenhada
+            break;
+          case 'b':
+            if (fingerBase1[4] < 90)
+              fingerBase1[4] = (fingerBase1[4] + 5) % 360;  // Aumenta a rotação em 5 graus e mantém o valor entre 0 e 360
+            glutPostRedisplay();                            // Solicita que a tela seja redesenhada
+            break;
+          case 'B':
+            if (fingerBase1[4] > 0)
+              fingerBase1[4] = (fingerBase1[4] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
+            glutPostRedisplay();                            // Solicita que a tela seja redesenhada
+            break;
+          case 'v':
+            if (fingerUp1[4] < 90) fingerUp1[4] = (fingerUp1[4] + 5) % 360;  // Aumenta a rotação em 5 graus e mantém o valor entre 0 e 360
+            glutPostRedisplay();                                             // Solicita que a tela seja redesenhada
+            break;
+          case 'V':
+            if (fingerUp1[4] > 0) fingerUp1[4] = (fingerUp1[4] - 5) % 360;  // Diminui a rotação em 5 graus e mantém o valor entre 0 e 360
+            glutPostRedisplay();                                            // Solicita que a tela seja redesenhada
+            break;
+          case 27:
+            exit(0);
+            break;
+          default:
+            break;*/
+      } 
   }
 
 void mouseRobo(int button, int state, int x, int y) {
