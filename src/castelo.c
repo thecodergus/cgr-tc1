@@ -707,51 +707,65 @@ void displayCastelo() {
  * @param y A posição y do cursor na janela.
  */
 void keyboardCastelo(unsigned char key, int x, int y) {
-  // movimento para cima
-  if (key == 'q') {
-    xrot += 1;
-    if (xrot > 360) xrot -= 360;
-  }
 
-  // movimento para baixo
-  if (key == 'z') {
+  switch (key)
+  {
+  case 'q':
+      // movimento para cima
+      xrot += 1;
+      if (xrot > 360) xrot -= 360;
+      break;
+  case 'z':
+    // movimento para baixo
     xrot -= 1;
-    if (xrot < -360) xrot += 360;
-  }
-
-  // movimento para frente
-  if (key == 'w') {
+    if (xrot < -360)
+      xrot += 360;
+    break;
+  case 'w':
+    // movimento para frente
     float xrotrad, yrotrad;
     yrotrad = (yrot / 180 * 3.141592654f);
     xrotrad = (xrot / 180 * 3.141592654f);
     xpos += (float)sin(yrotrad);
     zpos -= (float)cos(yrotrad);
     ypos -= (float)sin(xrotrad);
-  }
-
-  // movimento para trás
-  if (key == 's') {
+    break;
+  case 's':
+    // movimento para trás
     float xrotrad, yrotrad;
     yrotrad = (yrot / 180 * 3.141592654f);
     xrotrad = (xrot / 180 * 3.141592654f);
     xpos -= (float)sin(yrotrad);
     zpos += (float)cos(yrotrad);
     ypos += (float)sin(xrotrad);
-  }
-
-  // movimento para esquerda
-  if (key == 'd') {
+    break;
+  case 'd':
+    // movimento para esquerda
     yrot += 1;
-    if (yrot > 360) yrot -= 360;
-  }
+    if (yrot > 360)
+      yrot -= 360;
+    break;
 
-  // movimento para direita
-  if (key == 'a') {
+  case 'a':
+    // movimento para direita
     yrot -= 1;
-    if (yrot < -360) yrot += 360;
+    if (yrot < -360)
+      yrot += 360;
+    break;
+
+  case 27:
+    // saída do programa (tecla ESC)
+    exit(0);
+    break;
+
+  case 'o':
+    // alternar estado do portao de "open"
+    open = !open;
+    break;
+
+      default:
+    break;
   }
-  if (key == 27) exit(0);        // saída do programa (tecla ESC)
-  if (key == 'o') open = !open;  // alternar estado de "open"
   displayCastelo();              // exibe o resultado
 }
 
