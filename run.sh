@@ -6,6 +6,8 @@ NOME_PROJETO="main" # Nome do projeto
 export CC=gcc # Escolhendo o compilador
 export CMAKE_PREFIX_PATH="/opt/vcpkg"
 
+export ninja=./ninja
+
 PASTA="build"
 
 # Verificando se a pasta existe
