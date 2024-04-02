@@ -393,9 +393,6 @@ void keyboardRobo(unsigned char key, int x, int y) {
         glutPostRedisplay();            // Solicita que a tela seja redesenhada
       }
       break;
-      ////////
-      switch (key) {
-          // ... restante do código ...
 
         case 'p':
           // Aumenta a rotação do ombro direito do robot
@@ -754,7 +751,7 @@ void keyboardRobo(unsigned char key, int x, int y) {
           break;
       }
   }
-}
+
 void mouseRobo(int button, int state, int x, int y) {
   // Função de callback para tratamento de eventos de clique do mouse
 
